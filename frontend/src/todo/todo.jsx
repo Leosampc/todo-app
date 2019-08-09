@@ -10,7 +10,7 @@ const URL = 'http://localhost:3003/api/todos'
 export default class Todo extends Component {
     constructor(props) {
       super(props)
-        this.state = { description: '', list: [] }
+        this.state = { description: '', todoList: [] }
 
         this.handleAdd           = this.handleAdd.bind(this)
         this.handleSearch        = this.handleSearch.bind(this)
@@ -59,7 +59,7 @@ export default class Todo extends Component {
     refresh(description = '') {
         const search = description ? `&description__regex=/${description}/` : ''
         axios.get(`${URL}?sort=-createdAt${search}`)
-            .then(response => this.setState({ ...this.state, description, list: response.data }))
+            .then(response => this.setState({ ...this.state, description, todoList: response.data }))
     }
 
     render() {
@@ -77,7 +77,7 @@ export default class Todo extends Component {
                     handleRemove={this.handleRemove}
                     handleMarkAsDone={this.handleMarkAsDone}
                     handleMarkAsPending={this.handleMarkAsPending}
-                    list={this.state.list} 
+                    todoList={this.state.todoList} 
                 />
             </div>
 

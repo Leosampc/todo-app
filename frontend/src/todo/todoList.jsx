@@ -2,10 +2,10 @@ import React from 'react'
 import IconButton from '../template/iconButton'
 
 export default props => {
-    const renderRows = () => {
-        const list = props.list || []
+    const renderTableRows = () => {
+        const todoList = props.todoList || []
 
-        return list.map(todo => (
+        return todoList.map(todo => (
             <tr key={todo._id} >
                 <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
                 <td>
@@ -25,7 +25,7 @@ export default props => {
                 </tr>
             </thead>
             <tbody>
-                {renderRows()}
+                {renderTableRows()}
             </tbody>
         </table>
     )
